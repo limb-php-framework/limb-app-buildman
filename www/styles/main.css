@@ -1,0 +1,73 @@
+/*page*/
+  html, body{width:100%;height:100%;}
+  body{background:#292929;padding:0; margin:0;}
+
+/*design*/
+  a img{border:0}
+
+/*navigation*/
+  a {font:bold 14px "Trebuchet MS";color:#ff6600;text-decoration:underline;text-transform:uppercase; }
+  a:hover {text-decoration:none;}
+  a:focus{ outline: none; }
+
+/*TAGS*/
+  h1{font: 2.2em "Times new roman"; color:#000; margin:0;padding: 0;}
+  h2{font:2.0em "Times New Roman";color:#000;margin:0;padding: 0;}
+  h3{font:1.8em "Times New Roman";color:#000;margin: 0;padding:0;}
+  h4{font:bold 1.6em "Times New Roman";color:#000;margin:0;padding: 0;}
+  dl, dt, dd, form {margin:0;padding: 0;}
+  p {margin: 0;padding:5px 0;}
+  ul {margin: 0;padding: 10px 20px;}
+  table {border-spacing: 0;border-collapse: collapse;}
+  table td {padding:0;}
+
+/*FONT*/
+  body{font:62.5%/1.5 "Trebuchet MS"; color:#fff}
+  table, td, th, ul {font-size: 1em;}
+  #copyright {font:1em "Trebuchet MS";color:#afaeac;}
+  .info dt {font:bold 1em "Trebuchet MS";color:#d4d4d4}
+  .list th {font:bold 1.3em "Trebuchet MS";color:#ff9752;}
+  .list td {font:1.3em "Trebuchet MS";}
+  .build td, .list .build td.revision_name a{font-size:1.1em;color:#b3b3b3;text-decoration:none;text-transform:none;}
+  .build td a {font:1.1em "Trebuchet MS";text-transform:none;}
+  .project_name a{color:#fff;text-transform:none;text-decoration:none;}
+  .project_name a:hover , .list .build td.revision_name a:hover {text-decoration:underline;}
+  .title {font:bold 1.5em Tahoma;color:#FFF;}
+  .changed { color: red }
+  .not_changed { color: green }
+  .version {font:0.9em "Trebuchet MS";color:#ff6600}
+
+/*Misc*/
+  .info {display:none;text-align:left}
+  .title {background:#ff6600;border-top:4px solid #fff;padding: 4px 30px 5px;}
+    .title img {cursor:pointer;margin:0 0 0 7px}
+  .status {width:80px}
+  .failed_build {background: url(../images/icon/last_error.gif) no-repeat left center;padding-left:20px;margin:6px 32px 0 13px;float:left;}
+  .progress_build {background: url(../images/icon/last_progress.gif) no-repeat left center;padding-left:20px;margin:6px 32px 0 0;float:left;}
+  .successful_build {background: url(../images/icon/last_ok.gif) no-repeat left center;padding-left:20px;float:left;margin-top:6px}
+  .version {display:block;position:absolute;width:297px;text-align:right;height:10px;top:5px;}
+  
+  /*layout*/
+    #wrapper {min-height:100%;position:relative}
+      *html #wrapper {height:100%;}
+      #content {padding-bottom:80px}
+
+    #head {background: #292929 url(../images/bgr/header.gif) repeat-x left top;height:86px}
+      #logo {margin: 20px 0 0 30px;}
+      #legend {position:absolute;top:30px;right:20px;}
+
+
+    .list {border:0;width:100%;margin: 0 0 30px;}
+    .list th {background: #6b6b6b;vertical-align:top;padding:1px 4px;}
+    .list td {border:1px solid #4d4c4a;border-width:1px 0;text-align:center;padding: 5px 4px;}
+    .list .project_name {width:280px;text-align:left;}
+    .list .build td.revision_name {text-align:left;}
+    .list .build td{background:#000;border:0px;padding:3px 4px}
+    .list .build td.revision_name {padding-right: 26px;}
+    .list .build td.revision_name img {margin-right:26px;}
+    .list .build .elem_decoration {text-align:right;padding-right:20px;}
+
+    #footer {background:#4d4d4d;height:74px;position:absolute;bottom:0px;width:100%}
+      #limb {float:right;margin:15px 0 0 30px;}
+      #bit {margin: 25px 30px 0px;float:right;}
+
