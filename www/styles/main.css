@@ -46,7 +46,7 @@
   .progress_build {background: url(../images/icon/last_progress.gif) no-repeat left center;padding-left:20px;margin:6px 32px 0 0;float:left;}
   .successful_build {background: url(../images/icon/last_ok.gif) no-repeat left center;padding-left:20px;float:left;margin-top:6px}
   .version {display:block;position:absolute;width:297px;text-align:right;height:10px;top:5px;}
-  
+
   /*layout*/
     #wrapper {min-height:100%;position:relative}
       *html #wrapper {height:100%;}
@@ -57,11 +57,11 @@
       #legend {position:absolute;top:30px;right:20px;}
 
 
-    .list {border:0;width:100%;margin: 0 0 30px;}
+    .list {border:0;width:100%;margin: 0 0 0px;}
     .list th {background: #6b6b6b;vertical-align:top;padding:1px 4px;}
     .list td {border:1px solid #4d4c4a;border-width:1px 0;text-align:center;padding: 5px 4px;}
     .list .project_name {width:280px;text-align:left;}
-    .list .build td.revision_name {text-align:left;}
+    .list .build td.revision_name {text-align:left;white-space:nowrap}
     .list .build td{background:#000;border:0px;padding:3px 4px}
     .list .build td.revision_name {padding-right: 26px;}
     .list .build td.revision_name img {margin-right:26px;}

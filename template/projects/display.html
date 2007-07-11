@@ -21,7 +21,7 @@
       <list:list id='categories'>
       <list:item>
 
-        <div class="title">Category "{$name}"<img src="/images/icon/close.gif"  width='11' height='11' alt='open/close' id='{$name}_category_toggle' onclick='category_toggle("{$name}_category"); return false;'/></div>
+        <div class="title">Projects from "{$name}" category<img src="/images/icon/close.gif"  width='11' height='11' alt='open/close' id='{$name}_category_toggle' onclick='category_toggle("{$name}_category"); return false;'/></div>
 
         <div id='{$name}_category'>
 
@@ -29,16 +29,17 @@
           <list:item>
             <table class='list'>
             <tr>
+              <th></th>
               <th class='status'>status</th>
-              <th>name</th>
-              <th>show all</th>
-              <th>build</th>
-              <th>date</th>
-              <th>info</th>
-              <th>.log</th>
+              <th align='left'>project</th>
+              <th width='40%'>info</th>
+              <th>revision</th>
+              <th>build date</th>
+              <th>log</th>
             </tr>
 
             <tr class='project_info'>
+              <td><core:OPTIONAL for='last_build'><a href="#" id='{$name}_builds_toggle' onclick='builds_toggle("{$name}_builds"); return false;'><img src="/images/icon/plus.gif"  width='10' height='10' alt='show_all'/></a></core:OPTIONAL></td>
               <td>
                 <core:OPTIONAL for='last_build.is_error'>
                   <img src="/images/icon/last_error.gif"  width='16' height='16' alt='failed build'/>
@@ -51,11 +52,12 @@
                 <core:OPTIONAL for='last_build.is_in_progress'>
                   <img src="/images/icon/last_progress.gif"  width='16' height='16' alt='progress build'/>
                 </core:OPTIONAL>
+
+                <core:DEFAULT for='last_build'>
+                  <img src="/images/icon/last_unknown.gif"  width='7' height='7' alt='no builds'/>
+                </core:DEFAULT>
               </td>
               <td class='project_name'><a href="{$last_build.build_web_dir}">{$name}</a></td>
-              <td><core:OPTIONAL for='builds_amount'><a href="#" id='{$name}_builds_toggle' onclick='builds_toggle("{$name}_builds"); return false;'><img src="/images/icon/plus.gif"  width='10' height='10' alt='show_all'/></a></core:OPTIONAL></td>
-              <td>{$last_build.build_revision}</td>
-              <td>{$last_build.build_date}</td>
               <td>
                 <a href="#" id='{$name}_info_toggle' onclick='info_toggle("{$name}_info"); return false;'><img src="/images/icon/plus.gif"  width='10' height='10' alt='show_all'/></a>
                 <dl id='{$name}_info' class='info'>
@@ -63,13 +65,17 @@
                   <dt>Build cmd:</dt><dd>{$build_cmd}</dd>
                 </dl>
               </td>
-              <td><a href='{$last_build.changelog_web_path}'>change</a>&nbsp;&nbsp;<a href='{$last_build.buildlog_web_path}'>build</a></td>
+              <td>{$last_build.build_revision}</td>
+              <td>{$last_build.build_date}</td>
+              <td><core:OPTIONAL for='last_build'><a href='{$last_build.changelog_web_path}'>change.log</a>&nbsp;&nbsp;<a href='{$last_build.buildlog_web_path}'>build.log</a></core:OPTIONAL></td>
             </tr>
             <list:list from='builds'>
               <list:item>
                 <tr class='build {$^name}_builds'>
+                  <td></td>
                   <td class='elem_decoration'><img src="/images/bgr/item.gif"  width='6' height='6' alt=''/></td>
-                  <td  class='revision_name' colspan='2'>
+                  <td  class='revision_name'>
+
                     <core:OPTIONAL for='is_error'>
                       <img src="/images/icon/error.gif"  width='7' height='7' alt='failed build'/>
                     </core:OPTIONAL>
@@ -86,7 +92,7 @@
                   <td>{$build_revision}</td>
                   <td>{$build_date}</td>
                   <td></td>
-                  <td><a href='{$changelog_web_path}'>change</a>&nbsp;&nbsp;<a href='{$buildlog_web_path}'>build</a>
+                  <td><a href='{$changelog_web_path}'>change.log</a>&nbsp;&nbsp;<a href='{$buildlog_web_path}'>build.log</a>
                   </td>
                 </tr>
               </list:item>
