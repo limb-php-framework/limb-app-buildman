@@ -23,8 +23,8 @@ $ chmod 777 /var/www/buildman/var
 
 6) Open http://buildman in your browser, you should see a couple of test projects
 
-7) You can change projects' properties by simply editing /var/www/buildman/*/settings.ini
-   files.
+7) All projects settings are stored in "projects" directory of buildman application. You can copy "projects-examples" 
+  directory into "projects" directory in order to try some sample projects.
 
 8) Try starting continuous integration process for all projects by invoking the following command in shell:
 
