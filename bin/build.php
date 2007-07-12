@@ -4,7 +4,7 @@ require_once('src/model/Project.class.php');
 
 class CliListener
 {
-  function notify($this, $msg)
+  function notify($notifier, $msg)
   {
     echo $msg;
   }
