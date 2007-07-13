@@ -5,7 +5,7 @@ lmb_require('limb/util/src/system/lmbFs.class.php');
 
 class Build extends lmbObject
 {
-  const BUILD_NAME_REGEX = '~^r(\d+)-((\d+)_(\d+)_(\d+)-(\d+)_(\d+)_(\d+))-([-\w]+)$~';
+  const BUILD_NAME_REGEX = '~^r(\d+)-((\d+)_(\d+)_(\d+)-(\d+)_(\d+)_(\d+))-([-\w\._]+)$~';
   const BUILD_TIME_FORMAT = 'Y_m_d-H_i_s';
 
   const STATE_UNDEF    = 1;
