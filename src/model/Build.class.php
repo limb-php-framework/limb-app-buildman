@@ -1,7 +1,13 @@
 <?php
-
 lmb_require('limb/classkit/src/lmbObject.class.php');
 lmb_require('limb/util/src/system/lmbFs.class.php');
+
+@define('BUILDMAN_WEB_DIR', '/');
+@define('BUILDMAN_CP_BIN', 'cp');
+@define('BUILDMAN_CAT_BIN', 'cat');
+@define('BUILDMAN_ZIP_BIN', 'zip');
+@define('BUILDMAN_GZIP_BIN', 'gzip');
+@define('BUILDMAN_TAR_BIN', 'tar');
 
 class Build extends lmbObject
 {
