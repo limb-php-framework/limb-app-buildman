@@ -150,7 +150,7 @@ class Build extends lmbObject
     $file = $this->build_dir . '/' . $name;
     $archive = $this->build_dir . '/' . $archive_name;
 
-    $zip = BUILDMAN_GZIP_BIN;
+    $zip = BUILDMAN_ZIP_BIN;
     $cat = BUILDMAN_CAT_BIN;
 
     if(is_dir($file))
