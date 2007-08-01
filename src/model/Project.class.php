@@ -395,7 +395,7 @@ EOD;
 
   protected function _syncProjectDirWithWc()
   {
-    $this->_execCmd(BUILDMAN_RSYNC_BIN . ' -CaO --delete ' .
+    $this->_execCmd(BUILDMAN_RSYNC_BIN . ' -CaO --include=tags --include=core --delete ' .
                     $this->_cygwinPath($this->getWc()) . '/ ' .
                     $this->_cygwinPath($this->getProjectDir()));
   }
