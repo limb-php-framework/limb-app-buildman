@@ -303,12 +303,14 @@ EOD;
 
   function getCheckoutWcCmd()
   {
-    return BUILDMAN_SVN_BIN . ' co --non-interactive ' . $this->getRepository() . ' ' . $this->getWc();
+    $scm_opts = $this->_getRaw('scm_opts');
+    return BUILDMAN_SVN_BIN . ' co --non-interactive ' . $scm_opts . ' ' . $this->getRepository() . ' ' . $this->getWc();
   }
 
   function getUpdateWcCmd()
   {
-    return BUILDMAN_SVN_BIN . ' up --non-interactive ' . $this->getWc();
+    $scm_opts = $this->_getRaw('scm_opts');
+    return BUILDMAN_SVN_BIN . ' up --non-interactive ' . $scm_opts . ' ' . $this->getWc();
   }
 
   function getWcRev()
@@ -324,7 +326,8 @@ EOD;
   protected function _getRev($path)
   {
     $svn = BUILDMAN_SVN_BIN;
-    preg_match('~Revision:\s*(\d+)\s+~i', `$svn info $path`, $m);
+    $scm_opts = $this->_getRaw('scm_opts');
+    preg_match('~Revision:\s*(\d+)\s+~i', `$svn info $scm_opts $path`, $m);
     return isset($m[1]) ? $m[1] : null;
   }
 
