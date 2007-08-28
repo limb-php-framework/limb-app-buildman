@@ -5,7 +5,6 @@ lmb_require('limb/util/src/system/lmbSys.class.php');
 lmb_require('limb/mail/src/lmbMailer.class.php');
 lmb_require('limb/config/src/lmbCachedIni.class.php');
 lmb_require('src/model/Build.class.php');
-lmb_require('src/model/DefaultChangeLogExtractor.class.php');
 
 @define('BUILDMAN_HOST', 'buildman');
 @define('BUILDMAN_MAIL_ADDR', 'buildman@localhost');
@@ -17,7 +16,6 @@ class Project extends lmbObject
 {
   protected $listener;
   protected $buildlog_processor;
-  protected $changelog_extractor;
   protected $build_rev;
   protected $build_date;
   protected $log;
@@ -73,17 +71,16 @@ class Project extends lmbObject
     }
   }
 
-  function build($listener=null, $buildlog_processor=null, $changelog_extractor=null)
+  function build($listener=null, $buildlog_processor=null)
   {
-    if(!$this->_doBuild($listener, $buildlog_processor, $changelog_extractor))
+    if(!$this->_doBuild($listener, $buildlog_processor))
       $this->_notifySubscribersOnError();
   }
 
-  protected function _doBuild($listener=null, $buildlog_processor=null, $changelog_extractor=null)
+  protected function _doBuild($listener=null, $buildlog_processor=null)
   {
     $this->listener = $listener;
     $this->buildlog_processor = $buildlog_processor;
-    $this->changelog_extractor = $changelog_extractor;
 
     try
     {
@@ -218,10 +215,10 @@ EOD;
 
   function retrieveChangelog($from=null, $to=null)
   {
-    if(!$this->changelog_extractor)
-      $this->changelog_extractor = new DefaultChangeLogExtractor();
-
-    return $this->changelog_extractor->extract($this->getWc(), $from, $to);
+    $svn = BUILDMAN_SVN_BIN;
+    $scm_opts = $this->_getRaw('scm_opts');
+    $rev = ($from && $to) ? "-r$from:$to" : '';
+    return `$svn log $scm_opts -v $rev $wc`;
   }
 
   function _tryBuild($build)
