@@ -218,6 +218,7 @@ EOD;
     $svn = BUILDMAN_SVN_BIN;
     $scm_opts = $this->_getRaw('scm_opts');
     $rev = ($from && $to) ? "-r$from:$to" : '';
+    $wc = $this->getWc();
     return `$svn log $scm_opts -v $rev $wc`;
   }
 
