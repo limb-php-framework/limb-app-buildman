@@ -259,8 +259,10 @@ EOD;
     $builds = array();
     foreach(scandir($dir) as $item)
     {
-      if($item != '.' && $item != '..' && is_dir($dir . '/' . $item))
-        $builds[$item] = new Build($dir . '/' . $item);
+      if($item != '.' && $item != '..' && is_dir($dir . '/' . $item) && preg_match('~r(\d+)~',$item,$matches)) {
+        $builds[intval($matches[1])] = new Build($dir . '/' . $item);
+      }
+	
     }
     krsort($builds);
     return array_values($builds);
