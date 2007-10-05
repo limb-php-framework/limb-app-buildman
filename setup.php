@@ -22,7 +22,7 @@ define('BUILDMAN_VERSION', trim(file_get_contents(dirname(__FILE__) . '/VERSION'
 @define('BUILDMAN_ZIP_BIN', 'zip');
 @define('BUILDMAN_GZIP_BIN', 'gzip');
 @define('BUILDMAN_TAR_BIN', 'tar');
-@define('BUILDMAN_MAIL_ADDR', 'buildman@dev.west-torg.ru');
+@define('BUILDMAN_MAIL_ADDR', 'buildman@'.php_uname('n'));
 @define('BUILDMAN_PROJECTS_SETTINGS_DIR', dirname(__FILE__) . '/projects/');
 @define('BUILDMAN_PROJECTS_SANDBOX_DIR', LIMB_VAR_DIR . '/projects/');
 @define('BUILDMAN_PROJECTS_WC_DIR', LIMB_VAR_DIR . '/wc/');
