@@ -14,8 +14,11 @@ if (!isset($_SERVER['argv'][1])) {
   foreach(Project :: findAllProjects() as $project)
     $project->build(new CliListener());
 } else {
-  $project = Project :: findProject($_SERVER['argv'][1]);
-  $project->build(new CliListener());
+  if ($project = Project :: findProject($_SERVER['argv'][1])) {
+    $project->build(new CliListener());
+  } else {
+    echo 'Error: project '.$_SERVER['argv'][1].' not found';
+  }
 }
 
 ?>
