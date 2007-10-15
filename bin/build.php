@@ -10,7 +10,12 @@ class CliListener
   }
 }
 
-foreach(Project :: findAllProjects() as $project)
+if (!isset($_SERVER['argv'][1])) {
+  foreach(Project :: findAllProjects() as $project)
+    $project->build(new CliListener());
+} else {
+  $project = Project :: findProject($_SERVER['argv'][1]);
   $project->build(new CliListener());
+}
 
 ?>
