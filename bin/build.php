@@ -10,15 +10,21 @@ class CliListener
   }
 }
 
-if (!isset($_SERVER['argv'][1])) {
+if(!isset($argv[1])) 
+{
   foreach(Project :: findAllProjects() as $project)
     $project->build(new CliListener());
-} else {
-  if ($project = Project :: findProject($_SERVER['argv'][1])) {
+} 
+else 
+{
+  if($project = Project :: findProject($argv[1])) 
+  {
     $project->build(new CliListener());
-  } else {
-    echo 'Error: project '.$_SERVER['argv'][1].' not found';
+  } 
+  else 
+  {
+    echo "Error: project '" . $argv[1] . "' not found\n";
+    exit(1);
   }
 }
 
-?>

@@ -52,8 +52,8 @@ class ProjectTest extends UnitTestCase
   {
     $project1 = new Project('foo');
 
-    $b1 = $project1->createBuild($rev1 = 21, $time1 = time());
-    $b2 = $project1->createBuild($rev2 = 34, $time2 = time() + 100);
+    $b1 = $project1->createBuild($rev1 = 999, $time1 = time());
+    $b2 = $project1->createBuild($rev2 = 1000, $time2 = time() + 100);
 
     $this->assertEqual($b1->getBuildStamp(), $time1);
     $this->assertEqual($b2->getBuildStamp(), $time2);
