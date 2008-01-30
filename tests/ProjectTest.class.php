@@ -60,6 +60,8 @@ class ProjectTest extends UnitTestCase
 
     $project2 = new Project('foo');
     $this->assertEqual($project2->getBuilds(), array($b2, $b1));//latest come first!
+    $this->assertEqual($last_build = $project2->getLastBuild(), $b2);
+    $this->assertEqual($last_build->getBuildRevision(), $rev2);
   }
 
   function testRemoveBuild()

@@ -15,26 +15,26 @@ class CategoryTest extends UnitTestCase
 
   function testFindCategories()
   {
-    //cat1
+    //category
     $this->_createProject(
     'foo',
     "repository=svn://svn.bit/1
     build_cmd=php %project_dir%/cli/build.php
-    category=cat1");
+    category=category");
 
-    //cat2
+    //zuppa category
     $this->_createProject(
     'zoo',
     "repository=svn://svn.bit/3
     build_cmd=php %project_dir%/cli/build.php
-    category=cat2");
+    category=zuppa category");
 
-    //cat1
+    //category
     $this->_createProject(
     'bar',
     "repository=svn://svn.bit/2
     build_cmd=php %project_dir%/cli/build.php
-    category=cat1");
+    category=category");
 
     //default category
     $this->_createProject(
@@ -43,11 +43,15 @@ class CategoryTest extends UnitTestCase
     build_cmd=php %project_dir%/cli/build.php");
 
     //entries are sorted by name
-    list($cat1, $cat2, $cat3) = Category :: findAllCategories();
+    list($category, $category_default, $category_zuppa) = Category :: findAllCategories();
 
-    list($p0) = $cat1->getProjects();
-    list($p1, $p2) = $cat2->getProjects();
-    list($p3) = $cat3->getProjects();
+    $this->assertEqual($category->getName(), 'category');
+    $this->assertEqual($category_default->getName(), 'default');
+    $this->assertEqual($category_zuppa->getName(), 'zuppa category');
+
+    list($p0) = $category_default->getProjects();
+    list($p1, $p2) = $category->getProjects();
+    list($p3) = $category_zuppa->getProjects();
 
     $this->assertEqual($p0->getName(), 'wow');//entries are sorted by name
 

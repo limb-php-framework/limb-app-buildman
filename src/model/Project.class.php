@@ -262,7 +262,7 @@ EOD;
       if($item != '.' && $item != '..' && is_dir($dir . '/' . $item) && preg_match('~r(\d+)~',$item,$matches)) {
         $builds[intval($matches[1])] = new Build($dir . '/' . $item);
       }
-	
+
     }
     krsort($builds);
     return array_values($builds);
@@ -327,8 +327,10 @@ EOD;
   {
     $svn = BUILDMAN_SVN_BIN;
     $scm_opts = $this->_getRaw('scm_opts');
-    preg_match('~Revision:\s*(\d+)\s+~i', `$svn info $scm_opts $path`, $m);
-    return isset($m[1]) ? $m[1] : null;
+    $cmd = "$svn info --xml $scm_opts $path";
+    $xmlstr = `$cmd`;
+    $xml = new SimpleXMLElement($xmlstr);
+    return $xml->entry[0]->commit['revision'];
   }
 
   function getWc()
@@ -356,7 +358,7 @@ EOD;
   {
     return $this->_getFileContents($this->getLastBuildRevFile());
   }
-  
+
   function getBuildsAmount()
   {
     return sizeof($this->getBuilds());

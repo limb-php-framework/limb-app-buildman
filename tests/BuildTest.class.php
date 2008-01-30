@@ -51,32 +51,32 @@ class BuildTest extends UnitTestCase
   {
     $build = Build :: createBuild(TEST_VAR_DIR, 'foo', $rev = 21, $time = time());
     $this->assertEqual(Build :: STATE_UNDEF, $build->getState());
-    $this->assertFalse($build->isError());
+    $this->assertFalse($build->getIsError());
   }
 
   function testMarkOk()
   {
     $build1 = Build :: createBuild(TEST_VAR_DIR, 'foo', $rev = 378, $time = time());
     $build1->markOk();
-    $this->assertFalse($build1->isError());
+    $this->assertFalse($build1->getIsError());
     $this->assertEqual(Build :: STATE_OK, $build1->getState());
 
     $build2 = Build :: createBuild(TEST_VAR_DIR, 'foo', $rev, $time);
-    $this->assertFalse($build2->isError());
+    $this->assertFalse($build2->getIsError());
     $this->assertEqual(Build :: STATE_OK, $build2->getState());
   }
 
   function testMarkError()
   {
     $build1 = Build :: createBuild(TEST_VAR_DIR, 'foo', $rev = 48, $time = time());
-    $this->assertFalse($build1->isError());
+    $this->assertFalse($build1->getIsError());
     $build1->markError();
-    $this->assertTrue($build1->isError());
+    $this->assertTrue($build1->getIsError());
     $this->assertEqual(Build :: STATE_ERROR, $build1->getState());
 
     $build2 = Build :: createBuild(TEST_VAR_DIR, 'foo', $rev, $time);
     $this->assertEqual(Build :: STATE_ERROR, $build2->getState());
-    $this->assertTrue($build2->isError());
+    $this->assertTrue($build2->getIsError());
   }
 }
 
