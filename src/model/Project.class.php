@@ -28,16 +28,23 @@ class Project extends lmbObject
 
   static function createFromIni($name, $file, $shared_file=null)
   {
-    $project = new Project($name);
-
     $ini = new lmbCachedIni($file);
-
+    
+    if($build_class_path = $ini->getOption('build_class_path'))
+    {
+      lmb_require($build_class_path);
+      $class_name = basename($build_class_path, '.class.php');
+      $project = new $class_name($name);
+    }
+    else
+      $project = new Project($name);
+    
     if($shared_file)
     {
       $shared_ini = new lmbCachedIni($shared_file);
       $project->import($shared_ini->getGroup('default'));
     }
-
+    
     $project->import($ini->getGroup('default'));
     return $project;
   }
